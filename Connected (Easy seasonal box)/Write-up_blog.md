@@ -40,7 +40,7 @@ Step 3: I opened tried looking up what was happening in the website but it didn'
 
 Step 4: I noticed that the website contains a login which knowing HTB could be used to abused to gain some sort of admin access? (I hope we don't have to do some sort of SQL injection. I'm still new to this stuff man...):
 
-![[Pasted image 20261014221414.png]]
+![[Pics/Pasted image 20261014221414.png]]
 
 
 The website has a bunch of interesting options as you can see: 

